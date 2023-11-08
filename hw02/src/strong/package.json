@@ -1,0 +1,14 @@
+{
+  "name": "4645e02e0c30f497",
+  "main": "4645e02e0c30f497@175.js",
+  "version": "175.0.0",
+  "homepage": "https://observablehq.com/d/4645e02e0c30f497",
+  "author": {
+    "name": "evan901010's Workspace",
+    "url": "https://observablehq.com/@evan901010-ws"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}
