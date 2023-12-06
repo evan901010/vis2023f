@@ -1,6 +1,5 @@
 function _1(md){return(
-md`# HW5 Strong
-`
+md`# HW 3 Strong baseline`
 )}
 
 function _userdata(FileAttachment){return(
@@ -48,11 +47,11 @@ require("topojson-client@3")
 )}
 
 function _bgColor(Inputs){return(
-Inputs.color({ label: "background color", value: "#cccccc" })
+Inputs.color({ label: "background color", value: "#F8C3CD" })
 )}
 
 function _strokeColor(Inputs){return(
-Inputs.color({ label: "stroke color", value: "#CCCC00" })
+Inputs.color({ label: "stroke color", value: "#884C3A" })
 )}
 
 function _strokeOpacity(Inputs){return(
@@ -62,7 +61,7 @@ Inputs.range([0, 1], {
 })
 )}
 
-function _chart(tw,d3,LivePlace_uniqueValues,topojson,DOM,bgColor,strokeColor,strokeOpacity,scaleCount,returnCount)
+function _chart(d3,LivePlace_uniqueValues,topojson,tw,DOM,bgColor,strokeColor,strokeOpacity,scaleCount,returnCount)
 {
   // 處理台與臺的關係
   tw.objects.counties.geometries.forEach((element) => {
@@ -76,7 +75,6 @@ function _chart(tw,d3,LivePlace_uniqueValues,topojson,DOM,bgColor,strokeColor,st
       element.properties.COUNTYNAME = "臺南市";
     }
   });
-  
   const color = d3.scaleQuantize([0, LivePlace_uniqueValues.length + 10], d3.schemeBlues[9]);
   
   const width = 300;
@@ -89,7 +87,6 @@ function _chart(tw,d3,LivePlace_uniqueValues,topojson,DOM,bgColor,strokeColor,st
     (bbox[0] + bbox[2]) / 2 + offsetX,
     (bbox[1] + bbox[3]) / 2 + offsetY
   ];
-  
   const projection = d3
     .geoMercator()
     .center(bboxCenter(topojson.bbox(tw)))
@@ -157,6 +154,6 @@ export default function define(runtime, observer) {
   main.variable(observer("strokeColor")).define("strokeColor", ["Generators", "viewof strokeColor"], (G, _) => G.input(_));
   main.variable(observer("viewof strokeOpacity")).define("viewof strokeOpacity", ["Inputs"], _strokeOpacity);
   main.variable(observer("strokeOpacity")).define("strokeOpacity", ["Generators", "viewof strokeOpacity"], (G, _) => G.input(_));
-  main.variable(observer("chart")).define("chart", ["tw","d3","LivePlace_uniqueValues","topojson","DOM","bgColor","strokeColor","strokeOpacity","scaleCount","returnCount"], _chart);
+  main.variable(observer("chart")).define("chart", ["d3","LivePlace_uniqueValues","topojson","tw","DOM","bgColor","strokeColor","strokeOpacity","scaleCount","returnCount"], _chart);
   return main;
 }
